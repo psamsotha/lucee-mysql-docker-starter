@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+
+  lucee52:
+    build: ./docker
+    ports: 
+      - "8052:8888"
+    volumes:
+      # - ./docker/lucee-server.xml:/opt/lucee/server/lucee-server/context/lucee-server.xml
+      # - ./docker/lucee-web.xml.cfm:/opt/lucee/web/lucee-web.xml.cfm
+      - ./src:/var/www
+  
